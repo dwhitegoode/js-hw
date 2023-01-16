@@ -114,97 +114,161 @@ console.log(longestWordInString("chatgpt will not replace me"))
 
 const getVowelCount = string => {
 
+  let vowels = 'aeiou'
+  let wordArr = string.split(' ').join('')
+  let vowelCount = 0;
+
+  console.log(wordArr)
+  for (let i = 0; i < wordArr.length; i++) {
+
+    if (vowels.indexOf(wordArr[i]) !== -1) {
+      vowelCount++
+    }
+  }
+  return vowelCount;
+
 }
 
-console.log(getVowelCount("chatgpt will not replace me"))
+console.log(getVowelCount("she sells sea shells by the seashore")) /*expects 10*/
 
 /**
  * Question 8
  * Write a JavaScript function that accepts a number as a parameter and check the number is prime or not.
  */
 
+const isPrime = num => {
+  //a whole number greater than 1 
+  if (num <= 1) return `${num} is not a prime number`
+  //that cannot be exactly divided by any whole number other than itself and 1
+  else {
+    for (let i = 2; i < num; i++) {
+      if (num % i == 0) return `${num} is not a prime number`
+    }
+  }
+  return `${num} is prime!`
+}
+console.log(isPrime(1)) /**expect false */
+console.log(isPrime(11))/**expect true */
+console.log(isPrime(8))/**expect false */
+
 /**
  * Question 9
  * Write a JavaScript function which accepts an argument and returns the type. 
  */
+const myType = arg => typeof arg
+
+console.log(myType('hello, world!')) /** string */
+console.log(myType(true)) /** boolean */
+console.log(myType([1, 2, 3, 4])) /** object */
 
 /**
  * Question 10
  * Write a JavaScript function which returns the n rows by n columns identity matrix. 
  */
+const identityMatrix = n => {
+
+  let idArr = []
+
+  // result [[1,0,0],[0,1,0],[0,0,1]]
+  return idArr
+}
+
+console.log(identityMatrix(3))
 
 /**
  * Question 11
+ * Write a JavaScript function which will take an array of numbers stored and find the second lowest and second greatest numbers, respectively. 
  */
 
 /**
  * Question 12
+ * Write a JavaScript function which says whether a number is perfect. 
  */
 
 /**
  * Question 13
+ * Write a JavaScript function to compute the factors of a positive integer. 
  */
 
 /**
  * Question 14
+ * Write a JavaScript function to convert an amount to coins. 
  */
 
 /**
- * Question
+ * Question 15
+ * Write a JavaScript function to compute the value of bn where n is the exponent and b is the bases. Accept b and n from the user and display the result. 
  */
 
 /**
- * Question
+ * Question 16
+ * Write a JavaScript function to extract unique characters from a string. 
  */
 
 /**
- * Question
+ * Question 17
+ * Write a JavaScript function to  get the number of occurrences of each letter in specified string. 
  */
 
 /**
- * Question
+ * Question 18
+ * Write a function for searching JavaScript arrays with a binary search. 
  */
 
 /**
- * Question
+ * Question 19
+ * Write a JavaScript function that returns array elements larger than a number. 
+
  */
 
 /**
- * Question
+ * Question 20
+ * Write a JavaScript function that generates a string id (specified length) of random characters. 
  */
 
 /**
- * Question
+ * Question 21
+ * Write a JavaScript function to get all possible subset with a fixed length (for example 2) combinations in an array.
  */
 
 /**
- * Question
+ * Question 22
+ * Write a JavaScript function that accepts two arguments, a string and a letter and the function will count the number of occurrences of the specified letter within the string. 
  */
 
 /**
- * Question
+ * Question 23
+ * Write a JavaScript function to find the first not repeated character. 
  */
 
 /**
- * Question
+ * Question 24
+ * Write a JavaScript function to apply Bubble Sort algorithm. 
  */
 
 /**
- * Question
+ * Question 25
+ * Write a JavaScript function that accept a list of country names as input and returns the longest country name as output. 
+
  */
 
 /**
- * Question
+ * Question 26
+ * Write a JavaScript function to find longest substring in a given a string without repeating characters. 
  */
 
 /**
- * Question
+ * Question 27
+ * Write a JavaScript function that returns the longest palindrome in a given string.
  */
 
 /**
- * Question
+ * Question 28
+ * Write a JavaScript program to pass a 'JavaScript function' as parameter. 
+ * 
  */
 
 /**
- * Question
+ * Question 29
+ * Write a JavaScript function to get the function name. 
  */
