@@ -451,9 +451,20 @@ console.log(nonRepeatSubString('sometimes'))
  * Question 27
  * Write a JavaScript function that returns the longest palindrome in a given string.
  */
-const longestPalindrome = str => {
+const longestPalindrome = word => {
 
+  if (word.length <= 1) {
+    return true;
+  }
+  const firstLetter = word[0]
+  const lastLetter = word[word.length - 1]
 
+  if (firstLetter === lastLetter) {
+    return isPalindrome(word.slice(1, -1))
+  }
+  else {
+    return false
+  }
 
 }
 console.log(longestPalindrome('parallel'))
