@@ -179,57 +179,182 @@ console.log(identityMatrix(3))
  * Question 11
  * Write a JavaScript function which will take an array of numbers stored and find the second lowest and second greatest numbers, respectively. 
  */
+const secondGreatestSecondLowest = arrayOfNums => {
 
+  let secondGreatest = [...arrayOfNums].sort((a, b) => b - a)[1]
+  let secondLowest = [...arrayOfNums].sort((a, b) => a - b)[1]
+
+  console.log(secondGreatest)
+  return [secondGreatest, secondLowest]
+}
+console.log(secondGreatestSecondLowest([3, 10, 2, 7, 4, 1, 8, 9]))
 /**
  * Question 12
  * Write a JavaScript function which says whether a number is perfect. 
  */
+const isPerfect = num => {
+
+  let temp = 0;
+  for (let i = 1; i <= num / 2; i++) {
+    if (num % i === 0) temp += i
+  }
+  if (temp === num && temp !== 0) return `${num} is perfect!`
+  else return `${num} is not perfect`
+
+}
+console.log(isPerfect(6))
+console.log(isPerfect(10))
 
 /**
  * Question 13
  * Write a JavaScript function to compute the factors of a positive integer. 
  */
-
+const getFactors = num => {
+  for (let i = 0; i <= num; i++) {
+    if (num % i == 0) {
+      console.log('factors are:', i)
+    }
+  }
+}
+console.log(getFactors(12))
 /**
  * Question 14
  * Write a JavaScript function to convert an amount to coins. 
  */
+const amountToCoins = money => {
+
+  let coins = [25, 10, 5, 2, 1]
+  let changeArr = []
+  for (let i = 0; i < coins.length; i++) {
+    let coin = coins[i]
+    if (money >= coin) {
+      money -= coin
+      changeArr.push(coin)
+      i--
+    }
+
+  }
+  return changeArr;
+}
+console.log(amountToCoins(46))
 
 /**
  * Question 15
  * Write a JavaScript function to compute the value of bn where n is the exponent and b is the bases. Accept b and n from the user and display the result. 
  */
 
+const exponential = (base, exponent) => {
+
+  if (exponent === 0) return 1
+  let raisedNum = base
+  for (let i = 1; i < exponent; i++) {
+    raisedNum *= base
+  }
+  return raisedNum
+}
+console.log(exponential(2, 0))
+
 /**
  * Question 16
  * Write a JavaScript function to extract unique characters from a string. 
  */
+const isUniqueChar = string => {
 
+  let stringPile = string.split(' ').join('')
+
+  let charArr = []
+
+  for (let char of stringPile) {
+
+    if (charArr.indexOf(char) === -1) {
+      charArr.push(char)
+    }
+  }
+  return charArr;
+
+}
+console.log(isUniqueChar('hello dolly')) /** h,e,l,o,d,y */
 /**
  * Question 17
  * Write a JavaScript function to  get the number of occurrences of each letter in specified string. 
  */
+const charOccurances = string => {
+  //  let stringArr = string.split('')
+  for (let i = 0; i < string.length; i++) {
+    let count = 0;
+    for (let j = 0; j < string.length; j++) {
+      if (string[i] === string[j] && i > j) break;
+      if (string[i] === string[j]) count++
+    }
+    if (count > 0) console.log(`${string[i]} occurs ${count} times`)
+  }
 
+}
+console.log(charOccurances('hello'))
 /**
  * Question 18
  * Write a function for searching JavaScript arrays with a binary search. 
  */
+const binarySearch = (array, searchNum, arrLeft, arrRight) => {
 
+  // let arrLeft = 0
+  // let arrRight = array.length - 1
+
+  if (arrRight >= arrLeft) {
+    let middle = Math.floor((arrRight - arrLeft) / 2) + arrLeft
+    if (searchNum === middle) return `${searchNum} was found in array!`
+
+    if (searchNum < array[middle]) return binarySearch(array, searchNum, arrLeft, middle - 1)
+
+    return binarySearch(array, searchNum, middle + 1, arrRight)
+  }
+
+  return `${searchNum} not found.`
+
+}
+let array = [1, 2, 3, 4, 5, 6, 8, 10, 15, 20];
+
+console.log(binarySearch(array, 3, 0, array.length - 1))
 /**
  * Question 19
  * Write a JavaScript function that returns array elements larger than a number. 
-
  */
+const elementsLarger = (array, num) => {
+  let arrayOfLargerNums = []
+  for (let i = num; i < array.length; i++) {
+    let currentElement = array[i]
+    if (currentElement > num) arrayOfLargerNums.push(currentElement)
+  }
+  return arrayOfLargerNums;
+}
+
+let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(elementsLarger(arr, 4))
 
 /**
  * Question 20
  * Write a JavaScript function that generates a string id (specified length) of random characters. 
  */
+const generateStringId = idLength => {
+
+  let charDictionary = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+  let generatedID = ''
+  for (let i = 0; i < idLength; i++) {
+    generatedID += charDictionary[Math.floor(Math.random() * charDictionary.length)]
+  }
+  return generatedID
+}
+console.log(generateStringId(10))
 
 /**
  * Question 21
  * Write a JavaScript function to get all possible subset with a fixed length (for example 2) combinations in an array.
  */
+const allPossibleSubSets = (arr, length) => {
+
+}
+let arr1 = [1, 3, 5, 7, 9, 11, 13, 15, 17]
+console.log(allPossibleSubSets(arr1,))
 
 /**
  * Question 22
