@@ -170,6 +170,22 @@ const identityMatrix = n => {
   let idArr = []
 
   // result [[1,0,0],[0,1,0],[0,0,1]]
+
+  for (let i = 0; i < n; i++) {
+
+
+    if (idArr[i] === undefined) idArr[i] = []
+    for (let j = 0; j < n; j++) {
+      if (i === j) {
+        idArr[i][j] = 1
+      }
+      else {
+        idArr[i][j] = 0
+      }
+    }
+  }
+
+
   return idArr
 }
 
@@ -428,22 +444,19 @@ const nonRepeatSubString = string => {
     if (subString.indexOf(letter) === -1) subString += letter
   }
   console.log(subString)
-  //return subString
-  // let longest = ''
-  // for (let i = 0; i < string.length; i++) {
-  //   let letter = string[i]
-  //   for (let j = 0; j < string.length; j++) {
-  //     if (){}
-  //   }
-  // }
 
 }
-console.log(nonRepeatSubString('sometimes')) //REFACTOR
+console.log(nonRepeatSubString('sometimes'))
 /**
  * Question 27
  * Write a JavaScript function that returns the longest palindrome in a given string.
  */
+const longestPalindrome = str => {
 
+
+
+}
+console.log(longestPalindrome('parallel'))
 /**
  * Question 28
  * Write a JavaScript program to pass a 'JavaScript function' as parameter. 
