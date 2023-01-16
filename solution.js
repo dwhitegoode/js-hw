@@ -281,12 +281,13 @@ console.log(isUniqueChar('hello dolly')) /** h,e,l,o,d,y */
 const charOccurances = string => {
   //  let stringArr = string.split('')
   for (let i = 0; i < string.length; i++) {
+    let letter = string[i]
     let count = 0;
     for (let j = 0; j < string.length; j++) {
-      if (string[i] === string[j] && i > j) break;
-      if (string[i] === string[j]) count++
+      if (letter === string[j] && i > j) break;
+      if (letter === string[j]) count++
     }
-    if (count > 0) console.log(`${string[i]} occurs ${count} times`)
+    if (count > 0) console.log(`${letter} occurs ${count} times`)
   }
 
 }
@@ -351,37 +352,93 @@ console.log(generateStringId(10))
  * Write a JavaScript function to get all possible subset with a fixed length (for example 2) combinations in an array.
  */
 const allPossibleSubSets = (arr, length) => {
-
+  let subArr = []
+  for (let i = 0; i < arr.length; i += length) {
+    subArr.push(arr.slice(i, i + length))
+  }
+  return subArr
 }
 let arr1 = [1, 3, 5, 7, 9, 11, 13, 15, 17]
-console.log(allPossibleSubSets(arr1,))
+console.log(allPossibleSubSets(arr1, 3))
 
 /**
  * Question 22
  * Write a JavaScript function that accepts two arguments, a string and a letter and the function will count the number of occurrences of the specified letter within the string. 
  */
+const countOfCharInString = (string, char) => {
 
+  let charCount = 0
+  for (let letter of string) {
+    if (letter === char) charCount++
+  }
+  return `${char} occurs ${charCount} times.`
+
+}
+console.log(countOfCharInString('hello dolly', 'l'))
 /**
  * Question 23
  * Write a JavaScript function to find the first not repeated character. 
  */
+const firstNotRepeatedChar = string => {
+  for (let i = 0; i < string.length; i++) {
+    let letter = string[i]
+    let count = 0
+    for (let j = 0; j < string.length; j++) {
+      if (letter === string[j] && i > j) return letter
+    }
+  }
+  return string[0]
 
+}
+console.log(firstNotRepeatedChar('repeat')) /** expects: e */
+console.log(firstNotRepeatedChar('github')) /** expects: g */
 /**
  * Question 24
  * Write a JavaScript function to apply Bubble Sort algorithm. 
  */
-
+const bubbleSort = array => {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length; j++) {
+      if (array[j] > array[j + 1]) {
+        let temp = array[j]
+        array[j] = array[j + 1]
+        array[j + 1] = temp
+      }
+    }
+  }
+  return array
+}
+console.log(bubbleSort([12, 5, 2, 8, 9, 6, 3]))
 /**
  * Question 25
  * Write a JavaScript function that accept a list of country names as input and returns the longest country name as output. 
-
  */
+const longestCountryName = country => country.sort((a, b) => b.length - a.length)[0]
+
+console.log(longestCountryName(['United States', 'England', 'Japan', 'China', 'Ethiopia', 'Singapore']))
 
 /**
  * Question 26
  * Write a JavaScript function to find longest substring in a given a string without repeating characters. 
  */
+const nonRepeatSubString = string => {
+  let subString = ''
+  for (let i = 0; i < string.length; i++) {
+    let letter = string[i]
+    if (subString.indexOf(letter) === -1) subString += letter
+  }
+  console.log(subString)
+  //return subString
+  // let longest = ''
+  // for (let i = 0; i < string.length; i++) {
+  //   let letter = string[i]
+  //   for (let j = 0; j < string.length; j++) {
+  //     if (){}
+  //   }
+  // }
 
+}
+console.log(nonRepeatSubString('sometimes')) //REFACTOR
 /**
  * Question 27
  * Write a JavaScript function that returns the longest palindrome in a given string.
@@ -392,8 +449,26 @@ console.log(allPossibleSubSets(arr1,))
  * Write a JavaScript program to pass a 'JavaScript function' as parameter. 
  * 
  */
+const favorite = name => {
+  if (name === 'David') {
+    return `good name`
+  }
+  return `try again`
+}
+const fn = (name, func) => {
+
+  return func(name)
+}
+console.log(fn('David', favorite))
+
 
 /**
  * Question 29
  * Write a JavaScript function to get the function name. 
  */
+const myNameIs = () => {
+
+  return myNameIs.name
+}
+
+console.log(myNameIs())
